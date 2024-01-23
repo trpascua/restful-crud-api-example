@@ -5,6 +5,7 @@ const productSchema = mongoose.Schema(
         name: {
             type: String,
             required: [true, "Please enter a product name"]
+
         },
         quantity: {
             type: Number,
@@ -18,13 +19,12 @@ const productSchema = mongoose.Schema(
         image: {
             type: String,
             required: false,
-        }
+        },
     },
     {
         timestamps: true
     }
 )
-
 
 const Product = mongoose.model('Product', productSchema);
 
