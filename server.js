@@ -47,6 +47,20 @@ app.put('/products/:id', async(req, res) => {
     }
 })
 
+// delete a product
+app.delete('/products/:id', async(req, res) => {
+    try {
+        const {id} = req.params;
+        const product = await Product.findByIdAndDelete(id);
+        if(!product){
+            return res.status(400).json({message: 'cannot find any product with that id'});
+        }
+        res.status(200).json(product);
+    } catch (error) {
+        res.status(500).json({message: error.message});
+    }
+});
+
 app.get('/blog', (req, res) => {
     res.send('Hello Blog, My name is Ted!');
 })
